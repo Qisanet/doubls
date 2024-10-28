@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Array</title>
+    <script>
+        function array(event) { 
+            event.preventDefault();
+            let doubled = [];  
+            let input = document.getElementById("input").value;
+            let arry = input.split(',').map(Number);  
+
+        
+            for (let value of arry) {
+    doubled.push(value * 2);
+}
+
+            
+            document.getElementById("result").innerHTML = `Doubled Numbers: [${doubled.join(', ')}]`;
+        }
+
+        function displayKeyValuePairs(event) {
+            event.preventDefault();  
+            let obj = {
+                a: 11,
+                b: 44,
+                c: 99
+            };
+
+            let resultElement = document.getElementById("resultKV"); 
+            let resultString = "";
+
+            
+            for (let key in obj) {
+                resultString += key + ": " + obj[key] + "<br>";
+                console.log(key + ": " + obj[key]);
+            }
+
+            resultElement.innerHTML = resultString; 
+        }
+
+        function displayStrings(event) {
+    event.preventDefault(); 
+    document.getElementById("resultTs").innerHTML = ""; // Clear previous results
+
+    let stringsArray = ["First string", "Second string", "Third string"];
+
+    for (let i = 0; i < stringsArray.length; i++) {
+        setTimeout(function() {
+            console.log(stringsArray[i]);
+            document.getElementById("resultTs").innerHTML += stringsArray[i] + "<br>";
+        }, 1000 * i);  // 1-second delay for each string
+    }
+}
+
+    </script>
+</head>
+<body>
+    <form>
+        <h2>Double the Numbers in the Array</h2>
+        <p>Put numbers here (comma-separated): 
+           <input type="text" id="input" placeholder="e.g. 1,2,3"> 
+           <button onclick="array(event)">Double</button>
+        </p>
+        <p id="result"></p>
+    </form>
+    <form>
+        <h2>Display Key-Value Pairs</h2>
+        <button onclick="displayKeyValuePairs(event)">Show Key-Value Pairs</button>
+        <p id="resultKV"></p> 
+    </form>
+    <form >
+        <h2>Print Strings with 1-Second Delay</h2>
+        <button onclick="displayStrings(event)">Start Printing Strings</button>
+        <p id="resultTs"></p>
+    </form>
+</body>
+</html>
